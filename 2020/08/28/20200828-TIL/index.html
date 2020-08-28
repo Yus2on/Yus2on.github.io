@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>20200828-TIL | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="TILToday I Learned123456789101112131415161718192021222324252627282930313233343536&#x2F;** * 싱글톤 패턴 구현하기 * * 단 하나의 인스턴스만 존재할 수 있는 클래스 SingletonPattern을 구현하시오. * * 생성자를 외부에서 직접 호출할 수 없다. * 정적 메소드인 getInstanc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="20200828-TIL">
+<meta property="og:url" content="http://yoursite.com/2020/08/28/20200828-TIL/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="TILToday I Learned123456789101112131415161718192021222324252627282930313233343536&#x2F;** * 싱글톤 패턴 구현하기 * * 단 하나의 인스턴스만 존재할 수 있는 클래스 SingletonPattern을 구현하시오. * * 생성자를 외부에서 직접 호출할 수 없다. * 정적 메소드인 getInstanc">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-08-28T09:07:04.000Z">
+<meta property="article:modified_time" content="2020-08-28T09:17:19.489Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="SingletonPattern">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-20200828-TIL" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/08/28/20200828-TIL/" class="article-date">
+  <time datetime="2020-08-28T09:07:04.000Z" itemprop="datePublished">2020-08-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      20200828-TIL
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="TIL"><a href="#TIL" class="headerlink" title="TIL"></a>TIL</h1><h2 id="Today-I-Learned"><a href="#Today-I-Learned" class="headerlink" title="Today I Learned"></a>Today I Learned</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 싱글톤 패턴 구현하기</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 단 하나의 인스턴스만 존재할 수 있는 클래스 SingletonPattern을 구현하시오.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * 생성자를 외부에서 직접 호출할 수 없다.</span></span><br><span class="line"><span class="comment"> * 정적 메소드인 getInstance() 메소드를 이용해 객체를 받아온다.</span></span><br><span class="line"><span class="comment"> * 받아온 객체는 항상 같은 객체를 참조해야 한다.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SingletonPattern</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> SingletonPattern instace = <span class="keyword">new</span> SingletonPattern();</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="title">SingletonPattern</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line">  <span class="comment">// 기본생성자를 private 를 사용하여 생성을 불가능하게 하고 getInstance를 통해서만 생성이 가능</span></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> SingletonPattern <span class="title">getInstance</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">// getInstance는 내부적으로 생성되지 않았다면 생성 필요함!!</span></span><br><span class="line">    <span class="comment">// 기존에 생성된 값이 존재한다면 생성된 인스턴스를 리턴하는 형태로 프로그램 전반에 걸쳐 하나의 인스턴스만 유지함.</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 인스턴스를 제공하는 메서드와 인스턴스 변수 모두 Static으로 선언된 정적 변수 및 메서드</span></span><br><span class="line">    <span class="comment">// 기본 생성자를 통해 생성할 수 없는데 외부에서 인스턴스에 접근하려면 클래스 변수와 메서드에 접근을 허용해야하기 때문에 정적타입(static)으로 선언함</span></span><br><span class="line">    <span class="keyword">return</span> instace;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SingletonPatternTest</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="comment">//SingletonPattern instance = new SingletonPattern(); // should fail</span></span><br><span class="line">    SingletonPattern instanceOne = SingletonPattern.getInstance();</span><br><span class="line">    SingletonPattern instanceTwo = SingletonPattern.getInstance();</span><br><span class="line"></span><br><span class="line">    System.out.println(instanceOne == instanceTwo); <span class="comment">// should be true</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h1 id="싱글턴-Singleton-이란"><a href="#싱글턴-Singleton-이란" class="headerlink" title="싱글턴(Singleton) 이란 ?"></a><strong>싱글턴(Singleton) 이란 ?</strong></h1><h2 id="정의"><a href="#정의" class="headerlink" title="정의"></a>정의</h2><blockquote>
+<p>소프트웨어 디자인 패턴에서 싱글턴 패턴(Singleton pattern)을 따르는 클래스는, 생성자가 여러 차례 호출되더라도 실제로 생성되는 객체는 하나이고 최초 생성 이후에 호출된 생성자는 최초의 생성자가 생성한 객체를 리턴한다. 이와 같은 디자인 유형을 싱글턴 패턴이라고 한다. 주로 공통된 객체를 여러개 생성해서 사용하는 DBCP(DataBase Connection Pool)와 같은 상황에서 많이 사용된다.</p>
+</blockquote>
+<p>위키피디아의 정의와 같이 싱글턴 패턴은 하나의 객체만을 생성해 이후에 호출된 곳에서는 생성된 객체를 반환하여 프로그램 전반에서 하나의 인스턴스만을 사용하게 하는 패턴.싱글턴 패턴(Singleton Pattern)은 <code>인스턴스가 오직 1개만 생성</code>되야 하는 경우에 사용되는 패턴이다.</p>
+<ul>
+<li>싱글턴 패턴을 사용해 하나의 인스턴스를 메모리에 등록해서 여러 스러드가 동시에 해당 인스턴스를 공유하여 사용하게끔 할 수 있음 (요청이 많은 곳에서 사용시 효율 상승)</li>
+<li>싱글턴을 만들때 <code>동시성(Concurrency)</code> 문제를 고려해서 싱글턴 설계 필요</li>
+</ul>
+<h1 id="자바의-싱글턴-패턴-Sigleton-Pattern-in-Java"><a href="#자바의-싱글턴-패턴-Sigleton-Pattern-in-Java" class="headerlink" title="자바의 싱글턴 패턴(Sigleton Pattern in Java)"></a><strong>자바의 싱글턴 패턴(Sigleton Pattern in Java)</strong></h1><p>싱글턴 패턴의 공통적인 특징은 <code>private constructor(프라이빗 생성자)</code> 를 가진다는 것과, <code>static method</code> 를 사용한다는 점.</p>
+<h2 id="싱글톤-패턴을-쓰는-이유"><a href="#싱글톤-패턴을-쓰는-이유" class="headerlink" title="싱글톤 패턴을 쓰는 이유"></a><strong>싱글톤 패턴을 쓰는 이유</strong></h2><ol>
+<li><p>고정된 메모리 영역을 얻으면서 한번의 new로 인스턴스를 사용하기 때문에 메모리 낭비 방지.</p>
+</li>
+<li><p>싱글톤으로 만들어진 클래스의 인스턴스는 전역 인스턴스 =&gt; 다른 클래스의 인스턴스가 데이터 공유하기 쉬움</p>
+<ul>
+<li>DBCP(DataBase Connection Pool)처럼 공통된 객체를 여러개 생성해서 사용해야하는 상황에서 많이 사용.<br>(쓰레드풀, 캐시, 대화상자, 사용자 설정, 레지스트리 설정, 로그 기록 객체등)</li>
+</ul>
+</li>
+<li><p>인스턴스가 절대적으로 한개만 존재하는 것을 보증하고 싶을 경우 사용.</p>
+</li>
+<li><p>두 번째 이용시부터는 객체 로딩 시간이 현저하게 줄어 성능이 좋아지는 장점!</p>
+</li>
+</ol>
+<h2 id="싱글톤-패턴의-문제점"><a href="#싱글톤-패턴의-문제점" class="headerlink" title="싱글톤 패턴의 문제점"></a><strong>싱글톤 패턴의 문제점</strong></h2><p>싱글톤 인스턴스가 너무 많은 일을 하거나 많은 데이터를 공유시킬 경우 다른 클래스의 인스턴스들 간에 결합도가 높아져 “개방-폐쇄 원칙” 을 위배하게 된다. (=객체 지향 설계 원칙에 어긋남)</p>
+<ul>
+<li>유지보수가 까다로워짐</li>
+<li>멀티 스레드 환경에서 동기화 처리 해야함</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/08/28/20200828-TIL/" data-id="ckee0vr3e0001ahqkcnp3cinz" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SingletonPattern/" rel="tag">SingletonPattern</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/28/20200827-TIL/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">20200827-TIL</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SingletonPattern/" rel="tag">SingletonPattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringBuilder/" rel="tag">StringBuilder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TIL/" rel="tag">TIL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/final/" rel="tag">final</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/overloading/" rel="tag">overloading</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/SingletonPattern/" style="font-size: 10px;">SingletonPattern</a> <a href="/tags/StringBuilder/" style="font-size: 10px;">StringBuilder</a> <a href="/tags/TIL/" style="font-size: 10px;">TIL</a> <a href="/tags/final/" style="font-size: 10px;">final</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/overloading/" style="font-size: 10px;">overloading</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/08/28/20200828-TIL/">20200828-TIL</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/28/20200827-TIL/">20200827-TIL</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/25/20200825-TIL/">20200825-TIL</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/24/20200824-TIL/">20200824-TIL</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/10/Hexo%EC%99%80-GitHub%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/">Hexo와 GitHub을 이용한 블로그 만들기</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
