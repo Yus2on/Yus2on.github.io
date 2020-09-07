@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Oh My Zsh upgrade : unable to upgrade | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Oh My Zsh (zsh)zsh란? Oh My Zsh는 bash보다 최근에 나온 쉘인 zsh의 환경설정을 다루는 프레임워크이다. Z 쉘(Z shell, zsh)은 상호작용 로그인 셸이자 셸 스크립트를 위한 강력한 명령 줄 인터프리터로 사용할 수 있는 유닉스 쉘이다.Zsh는 bash, ksh, tcsh의 일부 기능을 포함하여 수많은 개선 사항이 갖추어진 확">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oh My Zsh upgrade : unable to upgrade">
+<meta property="og:url" content="http://yoursite.com/2020/09/07/Oh-My-Zsh-upgrade-unable-to-upgrade/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Oh My Zsh (zsh)zsh란? Oh My Zsh는 bash보다 최근에 나온 쉘인 zsh의 환경설정을 다루는 프레임워크이다. Z 쉘(Z shell, zsh)은 상호작용 로그인 셸이자 셸 스크립트를 위한 강력한 명령 줄 인터프리터로 사용할 수 있는 유닉스 쉘이다.Zsh는 bash, ksh, tcsh의 일부 기능을 포함하여 수많은 개선 사항이 갖추어진 확">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-07T14:23:45.000Z">
+<meta property="article:modified_time" content="2020-09-07T15:11:20.562Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="OhMyZsh">
+<meta property="article:tag" content="zsh">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.0.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Oh-My-Zsh-upgrade-unable-to-upgrade" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/07/Oh-My-Zsh-upgrade-unable-to-upgrade/" class="article-date">
+  <time datetime="2020-09-07T14:23:45.000Z" itemprop="datePublished">2020-09-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Oh My Zsh upgrade : unable to upgrade
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Oh-My-Zsh-zsh"><a href="#Oh-My-Zsh-zsh" class="headerlink" title="Oh My Zsh (zsh)"></a>Oh My Zsh (zsh)</h1><h2 id="zsh란"><a href="#zsh란" class="headerlink" title="zsh란?"></a>zsh란?</h2><ul>
+<li>Oh My Zsh는 bash보다 최근에 나온 쉘인 zsh의 환경설정을 다루는 프레임워크이다.<blockquote>
+<p>Z 쉘(Z shell, zsh)은 상호작용 로그인 셸이자 셸 스크립트를 위한 강력한 명령 줄 인터프리터로 사용할 수 있는 유닉스 쉘이다.<br>Zsh는 bash, ksh, tcsh의 일부 기능을 포함하여 수많은 개선 사항이 갖추어진 확장형 본 쉘이다. <a target="_blank" rel="noopener" href="https://ko.wikipedia.org/wiki/Z_%EC%85%B8">위키백과</a>  </p>
+</blockquote>
+</li>
+</ul>
+<h2 id="zsh-설치"><a href="#zsh-설치" class="headerlink" title="zsh 설치"></a>zsh 설치</h2><ul>
+<li>zsh 설치 확인 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> zsh --version</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>설치가 되어 있다면<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">which</span> zsh            <span class="comment"># 쉘의 위치 확인</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> chsh -s /usr/bin/zsh <span class="comment"># 기본 쉘 변경</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> chsh -s `<span class="built_in">which</span> zsh`  <span class="comment"># 위 두 개의 명령을 한 줄로 처리</span></span></span><br></pre></td></tr></table></figure></li>
+<li>설치가 되어 있지 않다면 <ul>
+<li>OS<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> brew update</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew install zsh</span></span><br></pre></td></tr></table></figure></li>
+<li>Ubuntu<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zsh</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+
+
+<h2 id="본론-zsh-업데이트-오류"><a href="#본론-zsh-업데이트-오류" class="headerlink" title="본론! zsh 업데이트 오류"></a>본론! zsh 업데이트 오류</h2>  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[Oh My Zsh] Would you like to check for updates? [Y/n]: y</span><br><span class="line">Upgrading Oh My Zsh</span><br><span class="line">Cannot pull with rebase: You have unstaged changes.</span><br><span class="line">Please commit or stash them.</span><br><span class="line">There was an error updating. Try again later?</span><br></pre></td></tr></table></figure>
+
+<h2 id="해결방법"><a href="#해결방법" class="headerlink" title="해결방법"></a>해결방법</h2><ol>
+<li><p>터미널에서 아래 명령을 입력하여 zsh 디렉토리로 변경. </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ~ / .oh-my-zsh</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>상태가 마스터보다 앞서 있는지 확인. </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git status</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git에 진행 상황을 저장하고 헤드를 마스터로 다시 이동. </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git stash</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>끝! 터미널을 종료 했다가 다시 시작해서 업그레이드 진행.</p>
+</li>
+</ol>
+<p>아래는 위 명령들을 한 줄로 쓴 것이다!!</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> <span class="string">&quot;<span class="variable">$ZSH</span>&quot;</span> &amp;&amp; git stash &amp;&amp; upgrade_oh_my_zsh</span></span><br></pre></td></tr></table></figure>
+
+<p>출처 : <a href="github-robbyrussell/oh-my-zsh">github-robbyrussell/oh-my-zsh</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/09/07/Oh-My-Zsh-upgrade-unable-to-upgrade/" data-id="ckesnxj1s000744qk4r54979h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OhMyZsh/" rel="tag">OhMyZsh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/08/28/20200828-TIL/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">20200828-TIL</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OhMyZsh/" rel="tag">OhMyZsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SingletonPattern/" rel="tag">SingletonPattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringBuilder/" rel="tag">StringBuilder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TIL/" rel="tag">TIL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/final/" rel="tag">final</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/overloading/" rel="tag">overloading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/OhMyZsh/" style="font-size: 10px;">OhMyZsh</a> <a href="/tags/SingletonPattern/" style="font-size: 10px;">SingletonPattern</a> <a href="/tags/StringBuilder/" style="font-size: 10px;">StringBuilder</a> <a href="/tags/TIL/" style="font-size: 10px;">TIL</a> <a href="/tags/final/" style="font-size: 10px;">final</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/overloading/" style="font-size: 10px;">overloading</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/09/07/Oh-My-Zsh-upgrade-unable-to-upgrade/">Oh My Zsh upgrade : unable to upgrade</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/28/20200828-TIL/">20200828-TIL</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/28/20200827-TIL/">20200827-TIL</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/25/20200825-TIL/">20200825-TIL</a>
+          </li>
+        
+          <li>
+            <a href="/2020/08/24/20200824-TIL/">20200824-TIL</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

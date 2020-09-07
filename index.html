@@ -64,6 +64,86 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Oh-My-Zsh-upgrade-unable-to-upgrade" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/09/07/Oh-My-Zsh-upgrade-unable-to-upgrade/" class="article-date">
+  <time datetime="2020-09-07T14:23:45.000Z" itemprop="datePublished">2020-09-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/09/07/Oh-My-Zsh-upgrade-unable-to-upgrade/">Oh My Zsh upgrade : unable to upgrade</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Oh-My-Zsh-zsh"><a href="#Oh-My-Zsh-zsh" class="headerlink" title="Oh My Zsh (zsh)"></a>Oh My Zsh (zsh)</h1><h2 id="zsh란"><a href="#zsh란" class="headerlink" title="zsh란?"></a>zsh란?</h2><ul>
+<li>Oh My Zsh는 bash보다 최근에 나온 쉘인 zsh의 환경설정을 다루는 프레임워크이다.<blockquote>
+<p>Z 쉘(Z shell, zsh)은 상호작용 로그인 셸이자 셸 스크립트를 위한 강력한 명령 줄 인터프리터로 사용할 수 있는 유닉스 쉘이다.<br>Zsh는 bash, ksh, tcsh의 일부 기능을 포함하여 수많은 개선 사항이 갖추어진 확장형 본 쉘이다. <a target="_blank" rel="noopener" href="https://ko.wikipedia.org/wiki/Z_%EC%85%B8">위키백과</a>  </p>
+</blockquote>
+</li>
+</ul>
+<h2 id="zsh-설치"><a href="#zsh-설치" class="headerlink" title="zsh 설치"></a>zsh 설치</h2><ul>
+<li>zsh 설치 확인 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> zsh --version</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>설치가 되어 있다면<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">which</span> zsh            <span class="comment"># 쉘의 위치 확인</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> chsh -s /usr/bin/zsh <span class="comment"># 기본 쉘 변경</span></span></span><br><span class="line"><span class="meta">$</span><span class="bash"> chsh -s `<span class="built_in">which</span> zsh`  <span class="comment"># 위 두 개의 명령을 한 줄로 처리</span></span></span><br></pre></td></tr></table></figure></li>
+<li>설치가 되어 있지 않다면 <ul>
+<li>OS<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> brew update</span></span><br><span class="line"><span class="meta">$</span><span class="bash"> brew install zsh</span></span><br></pre></td></tr></table></figure></li>
+<li>Ubuntu<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install zsh</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<br>
+
+
+<h2 id="본론-zsh-업데이트-오류"><a href="#본론-zsh-업데이트-오류" class="headerlink" title="본론! zsh 업데이트 오류"></a>본론! zsh 업데이트 오류</h2>  <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[Oh My Zsh] Would you like to check for updates? [Y/n]: y</span><br><span class="line">Upgrading Oh My Zsh</span><br><span class="line">Cannot pull with rebase: You have unstaged changes.</span><br><span class="line">Please commit or stash them.</span><br><span class="line">There was an error updating. Try again later?</span><br></pre></td></tr></table></figure>
+
+<h2 id="해결방법"><a href="#해결방법" class="headerlink" title="해결방법"></a>해결방법</h2><ol>
+<li><p>터미널에서 아래 명령을 입력하여 zsh 디렉토리로 변경. </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> ~ / .oh-my-zsh</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>상태가 마스터보다 앞서 있는지 확인. </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git status</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>git에 진행 상황을 저장하고 헤드를 마스터로 다시 이동. </p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> git stash</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>끝! 터미널을 종료 했다가 다시 시작해서 업그레이드 진행.</p>
+</li>
+</ol>
+<p>아래는 위 명령들을 한 줄로 쓴 것이다!!</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span><span class="bash"> <span class="built_in">cd</span> <span class="string">&quot;<span class="variable">$ZSH</span>&quot;</span> &amp;&amp; git stash &amp;&amp; upgrade_oh_my_zsh</span></span><br></pre></td></tr></table></figure>
+
+<p>출처 : <a href="github-robbyrussell/oh-my-zsh">github-robbyrussell/oh-my-zsh</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/09/07/Oh-My-Zsh-upgrade-unable-to-upgrade/" data-id="ckesnxj1s000744qk4r54979h" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/OhMyZsh/" rel="tag">OhMyZsh</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-20200828-TIL" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/08/28/20200828-TIL/" class="article-date">
@@ -123,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/28/20200828-TIL/" data-id="ckel0zz3u0003aqqk418l4pno" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/28/20200828-TIL/" data-id="ckesnxj1p000344qk6cto6hsk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SingletonPattern/" rel="tag">SingletonPattern</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
@@ -195,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/28/20200827-TIL/" data-id="ckel0zz3r0001aqqk8t1k82ea" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/28/20200827-TIL/" data-id="ckesnxj1i000044qkeqp89mbj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/final/" rel="tag">final</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/overloading/" rel="tag">overloading</a></li></ul>
@@ -264,7 +344,7 @@ System.out.println(sb.toString());</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/25/20200825-TIL/" data-id="ckel0zz3n0000aqqkg6xa31ng" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/25/20200825-TIL/" data-id="ckesnxj1m000144qkgw7lh2r6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/StringBuilder/" rel="tag">StringBuilder</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
@@ -645,7 +725,7 @@ System.out.println(sb.toString());</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/24/20200824-TIL/" data-id="ckel0zz49000qaqqkfa5a5p8h" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/24/20200824-TIL/" data-id="ckesnxj23000v44qkblxgff21" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/" rel="tag">java</a></li></ul>
@@ -704,7 +784,7 @@ System.out.println(sb.toString());</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/10/Hexo%EC%99%80-GitHub%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/" data-id="ckel0zz3v0004aqqk7ku4gl14" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/10/Hexo%EC%99%80-GitHub%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/" data-id="ckesnxj1p000444qkafcqchcp" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/TIL/" rel="tag">TIL</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li></ul>
@@ -743,7 +823,7 @@ System.out.println(sb.toString());</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/07/My-first-blog-post-with-hexo/" data-id="ckel0zz3w0005aqqk76h4cgdy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/07/My-first-blog-post-with-hexo/" data-id="ckesnxj1q000544qk111rhlwi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -792,7 +872,7 @@ System.out.println(sb.toString());</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/08/07/hello-world/" data-id="ckel0zz48000paqqk8h3iez03" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/08/07/hello-world/" data-id="ckesnxj1s000844qk6iwrdycw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -815,7 +895,7 @@ System.out.println(sb.toString());</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SingletonPattern/" rel="tag">SingletonPattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringBuilder/" rel="tag">StringBuilder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TIL/" rel="tag">TIL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/final/" rel="tag">final</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/overloading/" rel="tag">overloading</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OhMyZsh/" rel="tag">OhMyZsh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SingletonPattern/" rel="tag">SingletonPattern</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/StringBuilder/" rel="tag">StringBuilder</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TIL/" rel="tag">TIL</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/final/" rel="tag">final</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/" rel="tag">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/" rel="tag">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/overloading/" rel="tag">overloading</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/zsh/" rel="tag">zsh</a></li></ul>
     </div>
   </div>
 
@@ -825,7 +905,7 @@ System.out.println(sb.toString());</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/SingletonPattern/" style="font-size: 10px;">SingletonPattern</a> <a href="/tags/StringBuilder/" style="font-size: 10px;">StringBuilder</a> <a href="/tags/TIL/" style="font-size: 10px;">TIL</a> <a href="/tags/final/" style="font-size: 10px;">final</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/overloading/" style="font-size: 10px;">overloading</a>
+      <a href="/tags/GitHub/" style="font-size: 10px;">GitHub</a> <a href="/tags/OhMyZsh/" style="font-size: 10px;">OhMyZsh</a> <a href="/tags/SingletonPattern/" style="font-size: 10px;">SingletonPattern</a> <a href="/tags/StringBuilder/" style="font-size: 10px;">StringBuilder</a> <a href="/tags/TIL/" style="font-size: 10px;">TIL</a> <a href="/tags/final/" style="font-size: 10px;">final</a> <a href="/tags/hexo/" style="font-size: 15px;">hexo</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/overloading/" style="font-size: 10px;">overloading</a> <a href="/tags/zsh/" style="font-size: 10px;">zsh</a>
     </div>
   </div>
 
@@ -834,7 +914,7 @@ System.out.println(sb.toString());</code></pre>
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a></li></ul>
     </div>
   </div>
 
@@ -845,6 +925,10 @@ System.out.println(sb.toString());</code></pre>
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/09/07/Oh-My-Zsh-upgrade-unable-to-upgrade/">Oh My Zsh upgrade : unable to upgrade</a>
+          </li>
         
           <li>
             <a href="/2020/08/28/20200828-TIL/">20200828-TIL</a>
@@ -860,10 +944,6 @@ System.out.println(sb.toString());</code></pre>
         
           <li>
             <a href="/2020/08/24/20200824-TIL/">20200824-TIL</a>
-          </li>
-        
-          <li>
-            <a href="/2020/08/10/Hexo%EC%99%80-GitHub%EC%9D%84-%EC%9D%B4%EC%9A%A9%ED%95%9C-%EB%B8%94%EB%A1%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0/">Hexo와 GitHub을 이용한 블로그 만들기</a>
           </li>
         
       </ul>
