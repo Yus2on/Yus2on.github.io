@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>18 Java Collections and Generics Best Practices - Hexo</title><meta description="1.Choosing the right collections내가 해결하는 문제 별 가장 적합하고 효율적인 collections를 사용할 필요가 있다. 아래 항목에 따라 collection 선택 필요  중복 요소의 허용 여부 (hash) NULL 의 허용 여부 ( &amp;#x3D; 객체에 null 처리 시 내부적으로 잘 동작을 할 것인가의 문제) 인덱스로 요소에 접근 가능의"><meta property="og:type" content="blog"><meta property="og:title" content="18 Java Collections and Generics Best Practices"><meta property="og:url" content="http://yoursite.com/2020/11/14/18-java-collections-and-generics-best-practices/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="1.Choosing the right collections내가 해결하는 문제 별 가장 적합하고 효율적인 collections를 사용할 필요가 있다. 아래 항목에 따라 collection 선택 필요  중복 요소의 허용 여부 (hash) NULL 의 허용 여부 ( &amp;#x3D; 객체에 null 처리 시 내부적으로 잘 동작을 할 것인가의 문제) 인덱스로 요소에 접근 가능의"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://yoursite.com/img/og_image.png"><meta property="article:published_time" content="2020-11-14T14:47:14.000Z"><meta property="article:modified_time" content="2020-11-14T14:57:07.172Z"><meta property="article:author" content="John Doe"><meta property="article:tag" content="Java"><meta property="article:tag" content="Generics"><meta property="article:tag" content="Collections"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://yoursite.com/2020/11/14/18-java-collections-and-generics-best-practices/"},"headline":"Hexo","image":["http://yoursite.com/img/og_image.png"],"datePublished":"2020-11-14T14:47:14.000Z","dateModified":"2020-11-14T14:57:07.172Z","author":{"@type":"Person","name":"John Doe"},"description":"1.Choosing the right collections내가 해결하는 문제 별 가장 적합하고 효율적인 collections를 사용할 필요가 있다. 아래 항목에 따라 collection 선택 필요  중복 요소의 허용 여부 (hash) NULL 의 허용 여부 ( &#x3D; 객체에 null 처리 시 내부적으로 잘 동작을 할 것인가의 문제) 인덱스로 요소에 접근 가능의"}</script><link rel="canonical" href="http://yoursite.com/2020/11/14/18-java-collections-and-generics-best-practices/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><meta name="generator" content="Hexo 5.1.1"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2020-11-14T14:47:14.000Z" title="2020-11-14T14:47:14.000Z">2020-11-14</time></span><span class="level-item">Updated&nbsp;<time dateTime="2020-11-14T14:57:07.172Z" title="2020-11-14T14:57:07.172Z">2020-11-14</time></span><span class="level-item">9 minutes read (About 1327 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">18 Java Collections and Generics Best Practices</h1><div class="content"><h2 id="1-Choosing-the-right-collections"><a href="#1-Choosing-the-right-collections" class="headerlink" title="1.Choosing the right collections"></a>1.Choosing the right collections</h2><p>내가 해결하는 문제 별 가장 적합하고 효율적인 collections를 사용할 필요가 있다. 아래 항목에 따라 collection 선택 필요</p>
+<ul>
+<li>중복 요소의 허용 여부 (hash)</li>
+<li>NULL 의 허용 여부 ( = 객체에 null 처리 시 내부적으로 잘 동작을 할 것인가의 문제)</li>
+<li>인덱스로 요소에 접근 가능의 여부<ul>
+<li>set이나 map 같은 경우에는 인데스로 접근 불가, list는 가능 -&gt; 장점이자 단점</li>
+</ul>
+</li>
+<li>속도가 빨라야 하거나 여러가지 컬렉션을 엮어서 써야할 때<ul>
+<li>list는 느림</li>
+</ul>
+</li>
+<li>concurrency (= 동시성) 지원 여부</li>
+</ul>
+<a id="more"></a>
+
+  <br>
+
+
+<h2 id="2-Always-using-interface-type-when-declaring-a-collection"><a href="#2-Always-using-interface-type-when-declaring-a-collection" class="headerlink" title="2. Always using interface type when declaring a collection"></a>2. Always using interface type when declaring a collection</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; listNames = <span class="keyword">new</span> ArrayList&lt;String&gt;();   <span class="comment">// (1)</span></span><br><span class="line">ArrayList&lt;String&gt; listNames = <span class="keyword">new</span> ArrayList&lt;String&gt;();  <span class="comment">// (2)</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>(2) 대신 (1) 을 사용</li>
+<li>리스트를 상속하는 외부 라이브러리를 사용할 수 있다.</li>
+</ul>
+  <br>
+
+
+<h2 id="3-Use-generic-type-and-diamond-operator"><a href="#3-Use-generic-type-and-diamond-operator" class="headerlink" title="3. Use generic type and diamond operator"></a>3. Use generic type and diamond operator</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Student&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>The <code>&lt;&gt;</code> is informally called the diamond operator.</li>
+<li>제네릭 타입을 사용하지 않으면 object(오브젝트)로 되어 있어서 어떤 것도 가능하며, 아무 것도 들어갈 수 없다는 의미가 됨 -&gt; Object를 사용하지 않는 것이 좋다</li>
+<li>모든 객체를 받을 때마다 타입을 확인한다는 것은 불편</li>
+</ul>
+  <br>
+
+
+<h2 id="4-Specify-initial-capacity-of-a-collection-if-possible"><a href="#4-Specify-initial-capacity-of-a-collection-if-possible" class="headerlink" title="4. Specify initial capacity of a collection if possible"></a>4. Specify initial capacity of a collection if possible</h2><ul>
+<li>가능하다면 컬렉션의 초기 용량 지정 필요</li>
+<li>비슷한 값을 넣어주는 것이 좋음 -&gt; 그만큼의 크기를 만들어놓고 시작하기 때문에 동작 속도 빨라짐</li>
+<li>작은 값이 잡히는데 계속 값을 넣으면 새로 메모리를 잡아야 함</li>
+</ul>
+  <br>
+
+<h2 id="5-Prefer-isEmpty-over-size"><a href="#5-Prefer-isEmpty-over-size" class="headerlink" title="5. Prefer isEmpty() over size()"></a>5. Prefer isEmpty() over size()</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (listStudents.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">// dos something if the list is not empty</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 보다는 isEmpty () 메서드 사용</span></span><br><span class="line"><span class="keyword">if</span> (!listStudents.isEmpty()) &#123;</span><br><span class="line">    <span class="comment">// dos something if the list is not empty</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>isEmpty()</code> 와  <code>size()</code> 는 크게 성능이 차이나지 않지만 가독성(readability)을 위함</li>
+</ul>
+  <br>
+
+
+<h2 id="6-Do-not-return-null-in-a-method-that-returns-a-collection"><a href="#6-Do-not-return-null-in-a-method-that-returns-a-collection" class="headerlink" title="6. Do not return null in a method that returns a collection"></a>6. Do not return null in a method that returns a collection</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Student&gt; <span class="title">findStudents</span><span class="params">(String className)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 잘못 사용 예</span></span><br><span class="line">  List&lt;Student&gt; listStudents = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="comment">//students are found//) &#123;</span></span><br><span class="line">    <span class="comment">// add students to the lsit</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> listStudents;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 차라리 비어있는 컬렉션이 낫다</span></span><br><span class="line">List&lt;Student&gt; listStudents = <span class="keyword">new</span> ArrayList&lt;&gt;;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>차라리 비어있는 컬렉션을 초기화 하는게 낫다 -&gt; 동작은 함. 다만 비어있기 때문에 개수를 따지면 0이 나올 수 있음</li>
+<li>null을 반환하면 메서드를 호출하면서 에러 발생할 수 있기 때문</li>
+<li>외부에서 예외처리 하지말고 차라리 비어있는 컬렉션을 뱉어주면 따로 예외처리없이 로직상에서 비어있는 것에 맞게 돌아가게 하는 것이 낫다</li>
+</ul>
+  <br>
+
+
+<h2 id="7-Do-not-use-the-classic-for-loop"><a href="#7-Do-not-use-the-classic-for-loop" class="headerlink" title="7. Do not use the classic for loop"></a>7. Do not use the classic for loop</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Student aStudent : listStudents) &#123;</span><br><span class="line">  <span class="comment">// do something with aStudent</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>향상된 for문 (= foreach()) 를 사용하는 것이 낫다</li>
+<li>코드가 간결하고 가독성이 높아짐.</li>
+<li>iterator(반복자) 함수 사용하던가 foreach() 사용</li>
+</ul>
+  <br>
+
+<h2 id="8-Favor-using-forEach-with-Lambda-expressions"><a href="#8-Favor-using-forEach-with-Lambda-expressions" class="headerlink" title="8. Favor using forEach() with Lambda expressions"></a>8. Favor using forEach() with Lambda expressions</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; fruits = Arrays.asList(<span class="string">&quot;Banana&quot;</span>, <span class="string">&quot;Lemon&quot;</span>, <span class="string">&quot;Orange&quot;</span>, <span class="string">&quot;Apple&quot;</span>);</span><br><span class="line"></span><br><span class="line">fruits.forEach(fruit -&gt; System.out.println(fruit));</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>위 7번에서 한단계 더 나아간 케이스</li>
+<li>Strem 외에 컬렉션에도 foreach() 가 존재 -&gt; foreach()를 쓸 때 Lambda를 사용<ul>
+<li>단점: break(), continue() 사용 불가</li>
+</ul>
+</li>
+</ul>
+  <br>
+
+
+
+<h2 id="9-Overriding-equals-and-hashCode-properly"><a href="#9-Overriding-equals-and-hashCode-properly" class="headerlink" title="9. Overriding equals() and hashCode() properly"></a>9. Overriding equals() and hashCode() properly</h2><ul>
+<li>set과 map 사용 시 hashCode() 를 사용할 때 더 효율적으로 사용하기 위함</li>
+<li>객체를 이용할 때 객체는 네이티브(Native Objects)로 되어있어 내부를 볼 수 없다 -&gt; 속도 향상을 위해선 특정 객체 중 특정 기준이 되는 것을  hashCode 로 사용</li>
+<li>sql로 예를 들 때 primary index 가 되는 id</li>
+</ul>
+  <br>
+
+<h2 id="10-Implementing-the-Comparable-interface-properly"><a href="#10-Implementing-the-Comparable-interface-properly" class="headerlink" title="10. Implementing the Comparable interface properly"></a>10. Implementing the Comparable interface properly</h2><ul>
+<li>TreeSet과 TreeMap 은 sort -&gt; 해당 요소가 추가될 때를 위해 Comparable 인터페이스의 바른 구현 필요</li>
+<li>Comparable 구현 객체이거나 새로운 Comparator 를 넣어주고 싶으면 같이 넣어주게끔 잘 구현하기</li>
+<li>Comparator를 따로 구현하게 되면 사용하는 시점에서 어떻게 구현했는지 알 수 없음</li>
+<li><a target="_blank" rel="noopener" href="https://www.codejava.net/java-core/collections/understanding-object-ordering-in-java-with-comparable-and-comparator">JAVA에서 객체 순서 이해 </a></li>
+</ul>
+  <br>
+
+<h2 id="11-Using-Arrays-and-Collections-utility-classes"><a href="#11-Using-Arrays-and-Collections-utility-classes" class="headerlink" title="11. Using Arrays and Collections utility classes"></a>11. Using Arrays and Collections utility classes</h2><ul>
+<li>Java Collections Framework는 많은 유용한 기능 제공 -&gt; 중요한 메서드가 있으니 필요할 때 찾아보는 습관 기르기</li>
+</ul>
+  <br>
+
+
+<h2 id="12-Using-the-Stream-API-on-collections"><a href="#12-Using-the-Stream-API-on-collections" class="headerlink" title="12. Using the Stream API on collections"></a>12. Using the Stream API on collections</h2><ul>
+<li>시각적으로 보기 편하고 빠르게 구현할 수 있다. (숙련도 필요)</li>
+</ul>
+  <br>
+
+
+<h2 id="13-Prefer-concurrent-collections-over-synchronized-wrappers"><a href="#13-Prefer-concurrent-collections-over-synchronized-wrappers" class="headerlink" title="13. Prefer concurrent collections over synchronized wrappers"></a>13. Prefer concurrent collections over synchronized wrappers</h2><ul>
+<li>참고로 알아두기만 하자..</li>
+</ul>
+  <br>
+
+<h2 id="14-Using-third-party-collections-libraries"><a href="#14-Using-third-party-collections-libraries" class="headerlink" title="14. Using third-party collections libraries"></a>14. Using third-party collections libraries</h2><ul>
+<li>일반적으론 jdk 내부에 있는걸로 충분하지만 최적화된 라이브러리가 있는지 찾아 보는 것도 중요</li>
+<li>자바로 구현되어 있지 않음.</li>
+<li>타사 컬렉션 라이브러리<ul>
+<li><a target="_blank" rel="noopener" href="http://fastutil.di.unimi.it/"><strong>Fastutil</strong></a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/google/guava"><strong>Guava</strong></a>:</li>
+<li><a target="_blank" rel="noopener" href="https://www.eclipse.org/collections"><strong>Eclipse Collections</strong></a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/JCTools/JCTools"><strong>JCTools</strong></a></li>
+</ul>
+</li>
+</ul>
+  <br>
+
+
+
+<h2 id="15-Eliminate-unchecked-warnings"><a href="#15-Eliminate-unchecked-warnings" class="headerlink" title="15. Eliminate unchecked warnings"></a>15. Eliminate unchecked warnings</h2><ul>
+<li><code>@SuppressWarnings(“unchecked”)</code> 를 사용해 경고 억제</li>
+<li>억제된 경고에 주석을 남김</li>
+<li>이게 100%는 아니고 조직에 따라 다를 수 있지만 좋은 습관</li>
+</ul>
+<br>
+
+
+<h2 id="16-Favor-generic-types"><a href="#16-Favor-generic-types" class="headerlink" title="16. Favor generic types"></a>16. Favor generic types</h2><ul>
+<li>컬렉션 외에도 메서드나  클래스를 쓸 때 제네릭 사용</li>
+</ul>
+<br>
+
+<h2 id="17-Favor-generic-methods"><a href="#17-Favor-generic-methods" class="headerlink" title="17. Favor generic methods"></a>17. Favor generic methods</h2><br>
+<br>
+
+<h2 id="18-Using-bounded-wildcards-to-increase-API-flexibility"><a href="#18-Using-bounded-wildcards-to-increase-API-flexibility" class="headerlink" title="18. Using bounded wildcards to increase API flexibility"></a>18. Using bounded wildcards to increase API flexibility</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">sum</span><span class="params">(Collection&lt;? extends Number&gt; col)</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>깊은 구현을 하게 될 때는 <code>&lt;? extends Number&gt;</code> 사용을 잘 해야 함</li>
+<li>interface와 concurrent(동시성)를 어떻게 구별하여 사용할지</li>
+<li>익숙해지면 이것들의 의미를 쉽게 알아볼 수 있음 -&gt; 습관 들이기 필요</li>
+</ul>
+<p>[출처]<br>“18 Java Collections and Generics Best Practices”, 12 June 2019, <a target="_blank" rel="noopener" href="https://www.codejava.net/java-core/collections/18-java-collections-and-generics-best-practices">https://www.codejava.net/java-core/collections/18-java-collections-and-generics-best-practices</a>.</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>18 Java Collections and Generics Best Practices</p><p><a href="http://yoursite.com/2020/11/14/18-java-collections-and-generics-best-practices/">http://yoursite.com/2020/11/14/18-java-collections-and-generics-best-practices/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>John Doe</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2020-11-14</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2020-11-14</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags size-small mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/java/">Java</a><a class="link-muted mr-2" rel="tag" href="/tags/generics/">Generics</a><a class="link-muted mr-2" rel="tag" href="/tags/collections/">Collections</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2020/11/10/%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%A8%B8%EC%8A%A4-%EC%88%98%EB%B0%95%EC%88%98%EB%B0%95%EC%88%98%EB%B0%95%EC%88%98%EB%B0%95%EC%88%98%EB%B0%95%EC%88%98-java/"><span class="level-item">[프로그래머스] 수박수박수박수박수박수? / Java</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Yuseon"></figure><p class="title is-size-4 is-block line-height-inherit">Yuseon</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Seoul, Korea</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">16</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">4</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">29</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Yus2on" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Yus2on"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile is-mobile" href="https://yus2on.github.io/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">yus2on.github.io</span></span></a></li><li><a class="level is-mobile is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/hexo/"><span class="level-start"><span class="level-item">Hexo</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/java/"><span class="level-start"><span class="level-item">Java</span></span><span class="level-end"><span class="level-item tag">4</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/java/til/"><span class="level-start"><span class="level-item">TIL</span></span><span class="level-end"><span class="level-item tag">4</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/setting/"><span class="level-start"><span class="level-item">Setting</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a><p class="size-small"><span>&copy; 2020 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
