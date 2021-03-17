@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>[백준] 2577 / 숫자의 개수 / Java - Hexo</title><meta description="TIL (Today I Learned)숫자의 개수https:&amp;#x2F;&amp;#x2F;www.acmicpc.net&amp;#x2F;problem&amp;#x2F;2577  문제 설명세 개의 자연수 A, B, C가 주어질 때 A × B × C를 계산한 결과에 0부터 9까지 각각의 숫자가 몇 번씩 쓰였는지를 구하는 프로그램을 작성하시오. 예를 들어 A &amp;#x3D; 150, B &amp;#x3D; 266, C &amp;#x3D; 427 이라면 A × B ×"><meta property="og:type" content="blog"><meta property="og:title" content="[백준] 2577 / 숫자의 개수 / Java"><meta property="og:url" content="http://yoursite.com/2021/03/17/%EB%B0%B1%EC%A4%80-2577-%EC%88%AB%EC%9E%90%EC%9D%98-%EA%B0%9C%EC%88%98-java/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="TIL (Today I Learned)숫자의 개수https:&amp;#x2F;&amp;#x2F;www.acmicpc.net&amp;#x2F;problem&amp;#x2F;2577  문제 설명세 개의 자연수 A, B, C가 주어질 때 A × B × C를 계산한 결과에 0부터 9까지 각각의 숫자가 몇 번씩 쓰였는지를 구하는 프로그램을 작성하시오. 예를 들어 A &amp;#x3D; 150, B &amp;#x3D; 266, C &amp;#x3D; 427 이라면 A × B ×"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://yoursite.com/img/og_image.png"><meta property="article:published_time" content="2021-03-17T13:45:46.000Z"><meta property="article:modified_time" content="2021-03-17T13:48:18.057Z"><meta property="article:author" content="John Doe"><meta property="article:tag" content="Java"><meta property="article:tag" content="Algorithm"><meta property="article:tag" content="codingTest"><meta property="article:tag" content="자바"><meta property="article:tag" content="알고리즘"><meta property="article:tag" content="코딩테스트"><meta property="article:tag" content="Baekjoon"><meta property="article:tag" content="백준"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://yoursite.com/2021/03/17/%EB%B0%B1%EC%A4%80-2577-%EC%88%AB%EC%9E%90%EC%9D%98-%EA%B0%9C%EC%88%98-java/"},"headline":"Hexo","image":["http://yoursite.com/img/og_image.png"],"datePublished":"2021-03-17T13:45:46.000Z","dateModified":"2021-03-17T13:48:18.057Z","author":{"@type":"Person","name":"John Doe"},"description":"TIL (Today I Learned)숫자의 개수https:&#x2F;&#x2F;www.acmicpc.net&#x2F;problem&#x2F;2577  문제 설명세 개의 자연수 A, B, C가 주어질 때 A × B × C를 계산한 결과에 0부터 9까지 각각의 숫자가 몇 번씩 쓰였는지를 구하는 프로그램을 작성하시오. 예를 들어 A &#x3D; 150, B &#x3D; 266, C &#x3D; 427 이라면 A × B ×"}</script><link rel="canonical" href="http://yoursite.com/2021/03/17/%EB%B0%B1%EC%A4%80-2577-%EC%88%AB%EC%9E%90%EC%9D%98-%EA%B0%9C%EC%88%98-java/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><meta name="generator" content="Hexo 5.1.1"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-03-17T13:45:46.000Z" title="2021-03-17T13:45:46.000Z">2021-03-17</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-03-17T13:48:18.057Z" title="2021-03-17T13:48:18.057Z">2021-03-17</time></span><span class="level-item"><a class="link-muted" href="/categories/java/">Java</a><span> / </span><a class="link-muted" href="/categories/java/algorithm/">Algorithm</a></span><span class="level-item">5 minutes read (About 790 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">[백준] 2577 / 숫자의 개수 / Java</h1><div class="content"><h1 id="TIL-Today-I-Learned"><a href="#TIL-Today-I-Learned" class="headerlink" title="TIL (Today I Learned)"></a>TIL (Today I Learned)</h1><h3 id="숫자의-개수"><a href="#숫자의-개수" class="headerlink" title="숫자의 개수"></a>숫자의 개수</h3><h3 id="https-www-acmicpc-net-problem-2577"><a href="#https-www-acmicpc-net-problem-2577" class="headerlink" title="https://www.acmicpc.net/problem/2577"></a><a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/2577">https://www.acmicpc.net/problem/2577</a></h3><br>
+
+<h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><p>세 개의 자연수 A, B, C가 주어질 때 A × B × C를 계산한 결과에 0부터 9까지 각각의 숫자가 몇 번씩 쓰였는지를 구하는 프로그램을 작성하시오.</p>
+<p>예를 들어 A = 150, B = 266, C = 427 이라면 A × B × C = 150 × 266 × 427 = 17037300 이 되고, 계산한 결과 17037300 에는 0이 3번, 1이 1번, 3이 2번, 7이 2번 쓰였다.</p>
+<a id="more"></a>
+
+<br>
+
+<h3 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h3><ul>
+<li>첫째 줄에 A, 둘째 줄에 B, 셋째 줄에 C가 주어진다. A, B, C는 모두 100보다 같거나 크고, 1,000보다 작은 자연수이다.</li>
+</ul>
+<br>
+
+<h3 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h3><ul>
+<li>첫째 줄에는 A × B × C의 결과에 0 이 몇 번 쓰였는지 출력한다. 마찬가지로 둘째 줄부터 열 번째 줄까지 A × B × C의 결과에 1부터 9까지의 숫자가 각각 몇 번 쓰였는지 차례로 한 줄에 하나씩 출력한다.</li>
+</ul>
+<br>
+
+<h3 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h3><table>
+<thead>
+<tr>
+<th>입력</th>
+<th>출력</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>150</td>
+<td>3</td>
+</tr>
+<tr>
+<td>266</td>
+<td>1</td>
+</tr>
+<tr>
+<td>427</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>0</td>
+</tr>
+<tr>
+<td></td>
+<td>0</td>
+</tr>
+</tbody></table>
+<br>
+
+
+
+<hr>
+<br>
+
+
+
+<h3 id="문제풀이"><a href="#문제풀이" class="headerlink" title="문제풀이"></a>문제풀이</h3><ul>
+<li>Scanner 대신  <strong>BufferedReader</strong> 로 입력 받는다</li>
+<li>A * B * C 의 값을 미리 변수로 선언해놓고 이 변수가 0이 아니면 반복해서 한 자릿수씩 줄여 나간다.</li>
+<li>몫과 나머지 연산을 사용한다</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.StringTokenizer;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 첫째 줄에 A, 둘째 줄에 B, 셋째 줄에 C가 주어진다.</span></span><br><span class="line"><span class="comment">// A, B, C는 모두 100보다 같거나 크고, 1,000보다 작은 자연수이다.</span></span><br><span class="line"><span class="comment">// A × B × C를 계산한 결과에 0부터 9까지 각각의 숫자가 몇 번씩 쓰였는지를 구하는 프로그램</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">        BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> val = Integer.parseInt(br.readLine()) * Integer.parseInt(br.readLine()) * Integer.parseInt(br.readLine());</span><br><span class="line">        <span class="keyword">int</span>[] x = <span class="keyword">new</span> <span class="keyword">int</span> [<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (val != <span class="number">0</span>) &#123;</span><br><span class="line">            x[val % <span class="number">10</span>] ++;</span><br><span class="line">            val/=<span class="number">10</span>;</span><br><span class="line">        &#125; <span class="comment">// end while</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> res : x) &#123;</span><br><span class="line">            System.out.println(res);</span><br><span class="line">        &#125; <span class="comment">// end for</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="정리"><a href="#정리" class="headerlink" title="정리"></a>정리</h3><ul>
+<li><p>먼저 0부터 9까지 체크할 길이 10의 int 배열을 생성한다. (기본 int배열 초기값은 모두 0)</p>
+</li>
+<li><p>val 에다가 br.readLine() 으로 읽은 값을 곱해서 저장한다.</p>
+</li>
+<li><p>우선 while 문의 조건으로 while 문의 조건으로 val 이 0 이 아니면 반복을 돌도록 한다.</p>
+</li>
+<li><p>val % 10 의 값 -&gt; 나머지 값을 배열의 index 로 활용하여 해당 인덱스의 값을 1 증가시켜주었다.</p>
+</li>
+<li><p>각 배열의 인덱스는 각 자릿수의 값을 의미하고 인덱스에 담긴 값(value)는 개수를 의미한다.</p>
+</li>
+<li><p>그런 뒤 val = val/10; 을 통해 한 자릿수씩 줄여나간다.</p>
+</li>
+<li><p>마지막으로 배열 원소에 저장된 모든 원소를 출력한다.</p>
+</li>
+<li><p>찾아보니까 <code>String.charAt()</code> 메소드를 쓰는 방식도 있었다.</p>
+<ul>
+<li>int배열과 곱한 값을 저장해준 뒤 String str 에다가 val 의 <strong>Int 형을 String 형으로 변환</strong>해 저장한다.</li>
+<li>for문을 통해 해당 문자열의 문자 값 <strong>- 48</strong> (또는 <strong>-‘0’</strong>)을 추출해내 int 배열의 index 값을 1 증가시켜주는 방식이었다.</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException </span>&#123;</span><br><span class="line">    BufferedReader br = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> InputStreamReader(System.in));</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span>[] arr = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> val = Integer.parseInt(br.readLine()) * Integer.parseInt(br.readLine()) *</span><br><span class="line">      Integer.parseInt(br.readLine());</span><br><span class="line"></span><br><span class="line">    String str = String.valueOf(val);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; str.length(); i++) &#123;</span><br><span class="line">      arr[(str.charAt(i) - <span class="number">48</span>)]++;</span><br><span class="line">    &#125; <span class="comment">// end for</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> v : arr) &#123;</span><br><span class="line">      System.out.println(v);</span><br><span class="line">    &#125; <span class="comment">// end for</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>[백준] 2577 / 숫자의 개수 / Java</p><p><a href="http://yoursite.com/2021/03/17/%EB%B0%B1%EC%A4%80-2577-%EC%88%AB%EC%9E%90%EC%9D%98-%EA%B0%9C%EC%88%98-java/">http://yoursite.com/2021/03/17/%EB%B0%B1%EC%A4%80-2577-%EC%88%AB%EC%9E%90%EC%9D%98-%EA%B0%9C%EC%88%98-java/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>John Doe</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-03-17</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2021-03-17</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags size-small mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/java/">Java</a><a class="link-muted mr-2" rel="tag" href="/tags/algorithm/">Algorithm</a><a class="link-muted mr-2" rel="tag" href="/tags/codingtest/">codingTest</a><a class="link-muted mr-2" rel="tag" href="/tags/%EC%9E%90%EB%B0%94/">자바</a><a class="link-muted mr-2" rel="tag" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a><a class="link-muted mr-2" rel="tag" href="/tags/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8/">코딩테스트</a><a class="link-muted mr-2" rel="tag" href="/tags/baekjoon/">Baekjoon</a><a class="link-muted mr-2" rel="tag" href="/tags/%EB%B0%B1%EC%A4%80/">백준</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/03/16/%EB%B0%B1%EC%A4%80-x%EB%B3%B4%EB%8B%A4-%EC%9E%91%EC%9D%80-%EC%88%98-java/"><span class="level-item">[백준] 10871 / X보다 작은 수 / Java</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Yuseon"></figure><p class="title is-size-4 is-block line-height-inherit">Yuseon</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Seoul, Korea</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">28</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">39</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Yus2on" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Yus2on"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile is-mobile" href="https://yus2on.github.io/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">yus2on.github.io</span></span></a></li><li><a class="level is-mobile is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/hexo/"><span class="level-start"><span class="level-item">Hexo</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/java/"><span class="level-start"><span class="level-item">Java</span></span><span class="level-end"><span class="level-item tag">24</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/java/algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">17</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/java/til/"><span class="level-start"><span class="level-item">TIL</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/setting/"><span class="level-start"><span class="level-item">Setting</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a><p class="size-small"><span>&copy; 2021 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
