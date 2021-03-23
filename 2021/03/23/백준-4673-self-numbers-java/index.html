@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>[백준] 4673 / Self-Numbers / Java - Hexo</title><meta description="TIL (Today I Learned)Self Numbershttps:&amp;#x2F;&amp;#x2F;www.acmicpc.net&amp;#x2F;problem&amp;#x2F;4673  문제 설명셀프 넘버는 1949년 인도 수학자 D.R. Kaprekar가 이름 붙였다. 양의 정수 n에 대해서 d(n)을 n과 n의 각 자리수를 더하는 함수라고 정의하자. 예를 들어, d(75) &amp;#x3D; 75+7+5 &amp;#x3D; 87이다. 양의 정"><meta property="og:type" content="blog"><meta property="og:title" content="[백준] 4673 / Self-Numbers / Java"><meta property="og:url" content="http://yoursite.com/2021/03/23/%EB%B0%B1%EC%A4%80-4673-self-numbers-java/"><meta property="og:site_name" content="Hexo"><meta property="og:description" content="TIL (Today I Learned)Self Numbershttps:&amp;#x2F;&amp;#x2F;www.acmicpc.net&amp;#x2F;problem&amp;#x2F;4673  문제 설명셀프 넘버는 1949년 인도 수학자 D.R. Kaprekar가 이름 붙였다. 양의 정수 n에 대해서 d(n)을 n과 n의 각 자리수를 더하는 함수라고 정의하자. 예를 들어, d(75) &amp;#x3D; 75+7+5 &amp;#x3D; 87이다. 양의 정"><meta property="og:locale" content="en_US"><meta property="og:image" content="http://yoursite.com/img/og_image.png"><meta property="article:published_time" content="2021-03-23T14:51:24.000Z"><meta property="article:modified_time" content="2021-03-23T14:53:03.601Z"><meta property="article:author" content="John Doe"><meta property="article:tag" content="Java"><meta property="article:tag" content="Algorithm"><meta property="article:tag" content="codingTest"><meta property="article:tag" content="자바"><meta property="article:tag" content="알고리즘"><meta property="article:tag" content="코딩테스트"><meta property="article:tag" content="Baekjoon"><meta property="article:tag" content="백준"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"http://yoursite.com/2021/03/23/%EB%B0%B1%EC%A4%80-4673-self-numbers-java/"},"headline":"Hexo","image":["http://yoursite.com/img/og_image.png"],"datePublished":"2021-03-23T14:51:24.000Z","dateModified":"2021-03-23T14:53:03.601Z","author":{"@type":"Person","name":"John Doe"},"description":"TIL (Today I Learned)Self Numbershttps:&#x2F;&#x2F;www.acmicpc.net&#x2F;problem&#x2F;4673  문제 설명셀프 넘버는 1949년 인도 수학자 D.R. Kaprekar가 이름 붙였다. 양의 정수 n에 대해서 d(n)을 n과 n의 각 자리수를 더하는 함수라고 정의하자. 예를 들어, d(75) &#x3D; 75+7+5 &#x3D; 87이다. 양의 정"}</script><link rel="canonical" href="http://yoursite.com/2021/03/23/%EB%B0%B1%EC%A4%80-4673-self-numbers-java/"><link rel="icon" href="/img/favicon.svg"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css"><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script><meta name="generator" content="Hexo 5.1.1"></head><body class="is-2-column"><nav class="navbar navbar-main"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta size-small is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-03-23T14:51:24.000Z" title="2021-03-23T14:51:24.000Z">2021-03-23</time></span><span class="level-item">Updated&nbsp;<time dateTime="2021-03-23T14:53:03.601Z" title="2021-03-23T14:53:03.601Z">2021-03-23</time></span><span class="level-item"><a class="link-muted" href="/categories/java/">Java</a><span> / </span><a class="link-muted" href="/categories/java/algorithm/">Algorithm</a></span><span class="level-item">4 minutes read (About 649 words)</span></div></div><h1 class="title is-3 is-size-4-mobile">[백준] 4673 / Self-Numbers / Java</h1><div class="content"><h1 id="TIL-Today-I-Learned"><a href="#TIL-Today-I-Learned" class="headerlink" title="TIL (Today I Learned)"></a>TIL (Today I Learned)</h1><h3 id="Self-Numbers"><a href="#Self-Numbers" class="headerlink" title="Self Numbers"></a>Self Numbers</h3><h3 id="https-www-acmicpc-net-problem-4673"><a href="#https-www-acmicpc-net-problem-4673" class="headerlink" title="https://www.acmicpc.net/problem/4673"></a><a target="_blank" rel="noopener" href="https://www.acmicpc.net/problem/4673">https://www.acmicpc.net/problem/4673</a></h3><br>
+
+<h3 id="문제-설명"><a href="#문제-설명" class="headerlink" title="문제 설명"></a>문제 설명</h3><p>셀프 넘버는 1949년 인도 수학자 D.R. Kaprekar가 이름 붙였다. 양의 정수 n에 대해서 d(n)을 n과 n의 각 자리수를 더하는 함수라고 정의하자. 예를 들어, d(75) = 75+7+5 = 87이다.</p>
+<p>양의 정수 n이 주어졌을 때, 이 수를 시작해서 n, d(n), d(d(n)), d(d(d(n))), …과 같은 무한 수열을 만들 수 있다.</p>
+<p>예를 들어, 33으로 시작한다면 다음 수는 33 + 3 + 3 = 39이고, 그 다음 수는 39 + 3 + 9 = 51, 다음 수는 51 + 5 + 1 = 57이다. 이런식으로 다음과 같은 수열을 만들 수 있다.</p>
+<p>33, 39, 51, 57, 69, 84, 96, 111, 114, 120, 123, 129, 141, …</p>
+<p>n을 d(n)의 생성자라고 한다. 위의 수열에서 33은 39의 생성자이고, 39는 51의 생성자, 51은 57의 생성자이다. 생성자가 한 개보다 많은 경우도 있다. 예를 들어, 101은 생성자가 2개(91과 100) 있다.</p>
+<p>생성자가 없는 숫자를 셀프 넘버라고 한다. 100보다 작은 셀프 넘버는 총 13개가 있다. 1, 3, 5, 7, 9, 20, 31, 42, 53, 64, 75, 86, 97</p>
+<p>10000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 출력하는 프로그램을 작성하시오.</p>
+<a id="more"></a>
+
+<br>
+
+<h3 id="입력"><a href="#입력" class="headerlink" title="입력"></a>입력</h3><ul>
+<li>입력은 없다.</li>
+</ul>
+<br>
+
+<h3 id="출력"><a href="#출력" class="headerlink" title="출력"></a>출력</h3><ul>
+<li>10,000보다 작거나 같은 셀프 넘버를 한 줄에 하나씩 증가하는 순서로 출력한다.</li>
+</ul>
+<br>
+
+<h3 id="입출력-예"><a href="#입출력-예" class="headerlink" title="입출력 예"></a>입출력 예</h3><table>
+<thead>
+<tr>
+<th><strong>출력</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><em>1</em></td>
+</tr>
+<tr>
+<td><em>3</em></td>
+</tr>
+<tr>
+<td><em>5</em></td>
+</tr>
+<tr>
+<td><em>7</em></td>
+</tr>
+<tr>
+<td><em>9</em></td>
+</tr>
+<tr>
+<td><em>20</em></td>
+</tr>
+<tr>
+<td><em>31</em></td>
+</tr>
+<tr>
+<td><em>42</em></td>
+</tr>
+<tr>
+<td><em>53</em></td>
+</tr>
+<tr>
+<td><em>64</em></td>
+</tr>
+<tr>
+<td><em>|</em></td>
+</tr>
+<tr>
+<td><em>| &lt;– a lot more numbers</em></td>
+</tr>
+<tr>
+<td><em>|</em></td>
+</tr>
+<tr>
+<td><em>9903</em></td>
+</tr>
+<tr>
+<td><em>9914</em></td>
+</tr>
+<tr>
+<td><em>9925</em></td>
+</tr>
+<tr>
+<td><em>9927</em></td>
+</tr>
+<tr>
+<td><em>9938</em></td>
+</tr>
+<tr>
+<td><em>9949</em></td>
+</tr>
+<tr>
+<td><em>9960</em></td>
+</tr>
+<tr>
+<td><em>9971</em></td>
+</tr>
+<tr>
+<td><em>9982</em></td>
+</tr>
+<tr>
+<td><em>9993</em></td>
+</tr>
+</tbody></table>
+<br>
+
+<hr>
+<br>
+
+
+
+<h3 id="문제풀이"><a href="#문제풀이" class="headerlink" title="문제풀이"></a>문제풀이</h3><ul>
+<li>정수형 n과 각 자리수 합을 더한 값을 정하고 1~10000 범위안에서 이 값들을 제외시킨 나머지를 반환한다.</li>
+<li>우선 n과 각 자릿수를 더하는 판별을 해줄 self_number 메서드 생성</li>
+<li>self-number를 판별해줄 boolean 배열을 10001까지 만든 이후 제외시켜줄 값을 true로 변환 -&gt; false 값만 반환</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Main</span> </span>&#123;</span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">boolean</span> [] temp = <span class="keyword">new</span> <span class="keyword">boolean</span>[<span class="number">10001</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; <span class="number">10001</span>; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(d(i) &lt; <span class="number">10001</span>) &#123;</span><br><span class="line">                temp[d(i) - <span class="number">1</span>] = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="comment">// end for</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; <span class="number">10001</span>; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(!temp[j]) &#123;</span><br><span class="line">                System.out.println(j + <span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="comment">// end for</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">d</span> <span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">          <span class="keyword">int</span> total = n;</span><br><span class="line"></span><br><span class="line">          <span class="keyword">while</span>(n != <span class="number">0</span>) &#123;</span><br><span class="line">            total = total + (n % <span class="number">10</span>);</span><br><span class="line">            n = n / <span class="number">10</span>;</span><br><span class="line">          &#125; <span class="comment">// end while</span></span><br><span class="line"></span><br><span class="line">          <span class="keyword">return</span> total;</span><br><span class="line">      &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="정리"><a href="#정리" class="headerlink" title="정리"></a>정리</h3><ul>
+<li><p>문제를 이해하기 어려웠다.</p>
+</li>
+<li><p>생성자가 없는 숫자가 셀프넘버가 되는 것이었는데 1+1=2 고, 0+0=0 이니까 1은 생성자가 없는 셀프넘버이다.</p>
+</li>
+<li><p>재귀문법은 지양해야 하니 셀프문법인지 판별하는 배열을 통해 풀었다.</p>
+</li>
+<li><p>다른 문제 풀이를 보니 출력할 때 StringBuilder 을 사용하기도 했다.</p>
+</li>
+<li><p>while문에서 초기화시킨 total에 다시 n을 더하는 이유</p>
+<ul>
+<li>1234라는 수가 있을 때, 1234 + 1 + 2+ 3+ 4 = 1244</li>
+<li>total에 누적합을 해주지 않으면 1244가 나올 수 없다.</li>
+</ul>
+<br>
+</li>
+</ul>
+</div><div class="article-licensing box"><div class="licensing-title"><p>[백준] 4673 / Self-Numbers / Java</p><p><a href="http://yoursite.com/2021/03/23/%EB%B0%B1%EC%A4%80-4673-self-numbers-java/">http://yoursite.com/2021/03/23/%EB%B0%B1%EC%A4%80-4673-self-numbers-java/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>John Doe</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-03-23</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2021-03-23</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a class="icon" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a><a class="icon" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags size-small mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/java/">Java</a><a class="link-muted mr-2" rel="tag" href="/tags/algorithm/">Algorithm</a><a class="link-muted mr-2" rel="tag" href="/tags/codingtest/">codingTest</a><a class="link-muted mr-2" rel="tag" href="/tags/%EC%9E%90%EB%B0%94/">자바</a><a class="link-muted mr-2" rel="tag" href="/tags/%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98/">알고리즘</a><a class="link-muted mr-2" rel="tag" href="/tags/%EC%BD%94%EB%94%A9%ED%85%8C%EC%8A%A4%ED%8A%B8/">코딩테스트</a><a class="link-muted mr-2" rel="tag" href="/tags/baekjoon/">Baekjoon</a><a class="link-muted mr-2" rel="tag" href="/tags/%EB%B0%B1%EC%A4%80/">백준</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/03/19/%EB%B0%B1%EC%A4%80-15596-%EC%A0%95%EC%88%98-n%EA%B0%9C%EC%9D%98-%ED%95%A9-java/"><span class="level-item">[백준] 15596 / 정수 N개의 합 / Java</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-4-widescreen  order-1"><div class="card widget"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Yuseon"></figure><p class="title is-size-4 is-block line-height-inherit">Yuseon</p><p class="is-size-6 is-block">Your title</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Seoul, Korea</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">30</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">5</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">39</p></a></div></div></nav><div class="level"><a class="level-item button is-primary is-rounded" href="https://github.com/Yus2on" target="_blank" rel="noopener">Follow</a></div><div class="level is-mobile"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/Yus2on"><i class="fab fa-github"></i></a><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="RSS" href="/"><i class="fas fa-rss"></i></a></div></div></div><!--!--><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">Links</h3><ul class="menu-list"><li><a class="level is-mobile is-mobile" href="https://yus2on.github.io/" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Hexo</span></span><span class="level-right"><span class="level-item tag">yus2on.github.io</span></span></a></li><li><a class="level is-mobile is-mobile" href="https://bulma.io" target="_blank" rel="noopener"><span class="level-left"><span class="level-item">Bulma</span></span><span class="level-right"><span class="level-item tag">bulma.io</span></span></a></li></ul></div></div></div><div class="card widget"><div class="card-content"><div class="menu"><h3 class="menu-label">Categories</h3><ul class="menu-list"><li><a class="level is-mobile is-marginless" href="/categories/hexo/"><span class="level-start"><span class="level-item">Hexo</span></span><span class="level-end"><span class="level-item tag">2</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/java/"><span class="level-start"><span class="level-item">Java</span></span><span class="level-end"><span class="level-item tag">26</span></span></a><ul class="mr-0"><li><a class="level is-mobile is-marginless" href="/categories/java/algorithm/"><span class="level-start"><span class="level-item">Algorithm</span></span><span class="level-end"><span class="level-item tag">19</span></span></a></li><li><a class="level is-mobile is-marginless" href="/categories/java/til/"><span class="level-start"><span class="level-item">TIL</span></span><span class="level-end"><span class="level-item tag">7</span></span></a></li></ul></li><li><a class="level is-mobile is-marginless" href="/categories/setting/"><span class="level-start"><span class="level-item">Setting</span></span><span class="level-end"><span class="level-item tag">1</span></span></a></li></ul></div></div></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/logo.svg" alt="Hexo" height="28"></a><p class="size-small"><span>&copy; 2021 John Doe</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
